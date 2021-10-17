@@ -5,10 +5,10 @@
   "javascript": {
     "framework": "vue",
     "config": {
-      "SourceDir": "src",
+      "SourceDir": ".",
       "DistributionDir": "dist",
       "BuildCommand": "yarn build",
-      "StartCommand": "yarn start"
+      "StartCommand": "yarn dev"
     }
   },
   "providers": [
