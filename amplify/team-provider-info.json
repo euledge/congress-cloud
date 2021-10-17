@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-congresscloud-dev-224340-authRole",
+      "UnauthRoleArn": "arn:aws:iam::950943002045:role/amplify-congresscloud-dev-224340-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::950943002045:role/amplify-congresscloud-dev-224340-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-congresscloud-dev-224340-deployment",
+      "UnauthRoleName": "amplify-congresscloud-dev-224340-unauthRole",
+      "StackName": "amplify-congresscloud-dev-224340",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:950943002045:stack/amplify-congresscloud-dev-224340/3ed13570-2f50-11ec-8fb1-066c9de695cb",
+      "AmplifyAppId": "dgy49jvu8t65u"
+    }
+  }
+}
