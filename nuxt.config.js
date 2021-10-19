@@ -31,7 +31,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/amplify.js', ssr: false }
+    { src: '@/plugins/amplify', ssr: false },
+    { src: '@/plugins/plugin', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
