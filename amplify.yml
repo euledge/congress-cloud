@@ -1,0 +1,28 @@
+version: 1
+backend:
+  phases:
+    build:
+      commands:
+        - "# Execute Amplify CLI with the helper script"
+        - amplifyPush --simple
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - yarn install
+    build:
+      commands:
+        - yarn run generate
+        - echo
+        - echo "ENV_PROJECT_REGION=$ENV_PROJECT_REGION" >> .env
+        - echo "ENV_APPSYNC_GRAPHQLENDPOINT=$ENV_APPSYNC_GRAPHQLENDPOINT" >> .env
+        - echo "ENV_APPSYNC_REGION=$ENV_APPSYNC_REGION" >> .env
+        - echo "ENV_APPSYNC_AUTHENTICATIONTYPE=$ENV_APPSYNC_AUTHENTICATIONTYPE" >> .env
+        - echo "ENV_APPSYNC_APIKEY=$ENV_APPSYNC_APIKEY" >> .env
+  artifacts:
+    baseDirectory: dist
+    files:
+      - "**/*"
+  cache:
+    paths:
+      - node_modules/**/*
