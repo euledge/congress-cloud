@@ -10,6 +10,7 @@ type Meeting @model {
 type Speaker @model {
   id: ID!
   name: String!
+  position: String!
   comments: [Comment]
     @connection(keyName: "listCommentBySpeakerId", fields: ["id"])
 }
