@@ -1,13 +1,12 @@
 import Vue from 'vue'
 import Amplify from 'aws-amplify'
-// import awsExports from '@/src/aws-exports'
 
 const awsExports = {
-    "aws_project_region": process.env.ENV_PROJECT_REGION,
-    "aws_appsync_graphqlEndpoint": process.env.ENV_APPSYNC_GRAPHQLENDPOINT,
-    "aws_appsync_region": process.env.ENV_APPSYNC_REGION,
-    "aws_appsync_authenticationType": process.env.ENV_APPSYNC_AUTHENTICATIONTYPE,
-    "aws_appsync_apiKey": process.env.ENV_APPSYNC_APIKEY
+    "aws_project_region": __NUXT__.config.aws_project_region,
+    "aws_appsync_graphqlEndpoint": __NUXT__.config.aws_appsync_graphqlEndpoint,
+    "aws_appsync_region": __NUXT__.config.aws_appsync_region,
+    "aws_appsync_authenticationType": __NUXT__.config.aws_appsync_authenticationType,
+    "aws_appsync_apiKey": __NUXT__.config.aws_appsync_apiKey,
 }
 
 Amplify.configure(awsExports)
