@@ -1,4 +1,3 @@
-/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
@@ -10,6 +9,15 @@ export const onCreateMeeting = /* GraphQL */ `
       eventDate
       url
       comments {
+        items {
+          id
+          meetingId
+          speakerId
+          voiceNo
+          words
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -25,6 +33,15 @@ export const onUpdateMeeting = /* GraphQL */ `
       eventDate
       url
       comments {
+        items {
+          id
+          meetingId
+          speakerId
+          voiceNo
+          words
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -40,6 +57,15 @@ export const onDeleteMeeting = /* GraphQL */ `
       eventDate
       url
       comments {
+        items {
+          id
+          meetingId
+          speakerId
+          voiceNo
+          words
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -52,7 +78,17 @@ export const onCreateSpeaker = /* GraphQL */ `
     onCreateSpeaker {
       id
       name
+      position
       comments {
+        items {
+          id
+          meetingId
+          speakerId
+          voiceNo
+          words
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -65,7 +101,17 @@ export const onUpdateSpeaker = /* GraphQL */ `
     onUpdateSpeaker {
       id
       name
+      position
       comments {
+        items {
+          id
+          meetingId
+          speakerId
+          voiceNo
+          words
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -78,7 +124,17 @@ export const onDeleteSpeaker = /* GraphQL */ `
     onDeleteSpeaker {
       id
       name
+      position
       comments {
+        items {
+          id
+          meetingId
+          speakerId
+          voiceNo
+          words
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt

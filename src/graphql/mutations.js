@@ -1,4 +1,3 @@
-/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
@@ -13,6 +12,15 @@ export const createMeeting = /* GraphQL */ `
       eventDate
       url
       comments {
+        items {
+          id
+          meetingId
+          speakerId
+          voiceNo
+          words
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -31,6 +39,15 @@ export const updateMeeting = /* GraphQL */ `
       eventDate
       url
       comments {
+        items {
+          id
+          meetingId
+          speakerId
+          voiceNo
+          words
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -49,6 +66,15 @@ export const deleteMeeting = /* GraphQL */ `
       eventDate
       url
       comments {
+        items {
+          id
+          meetingId
+          speakerId
+          voiceNo
+          words
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -64,7 +90,17 @@ export const createSpeaker = /* GraphQL */ `
     createSpeaker(input: $input, condition: $condition) {
       id
       name
+      position
       comments {
+        items {
+          id
+          meetingId
+          speakerId
+          voiceNo
+          words
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -80,7 +116,17 @@ export const updateSpeaker = /* GraphQL */ `
     updateSpeaker(input: $input, condition: $condition) {
       id
       name
+      position
       comments {
+        items {
+          id
+          meetingId
+          speakerId
+          voiceNo
+          words
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -96,7 +142,17 @@ export const deleteSpeaker = /* GraphQL */ `
     deleteSpeaker(input: $input, condition: $condition) {
       id
       name
+      position
       comments {
+        items {
+          id
+          meetingId
+          speakerId
+          voiceNo
+          words
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
