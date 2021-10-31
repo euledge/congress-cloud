@@ -1,7 +1,21 @@
 <template>
   <!-- 最新の議事を並べる-->
-  <v-row>
-    <cloud-card v-for="m in meetings" :key="m.id" :meeting="m"></cloud-card>
+  <v-row class="mt-5">
+    <v-row>
+      <v-banner
+        >これは、<a href="http://www.city.fukuroi.shizuoka.dbsr.jp/index.php/"
+          >袋井市議会会議録</a
+        >&nbsp;に公開されている議事録から発言された単語の回数をもとにワードクラウドにしたものです</v-banner
+      >
+    </v-row>
+    <v-row>
+      <cloud-card
+        v-for="m in meetings"
+        :key="m.id"
+        :meeting="m"
+        :fontSizeRatio="5"
+      ></cloud-card>
+    </v-row>
   </v-row>
 </template>
 

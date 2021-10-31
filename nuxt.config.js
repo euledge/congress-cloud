@@ -28,18 +28,17 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
-  // フロントエンドで公開されていいもの
+
   publicRuntimeConfig: {
-    // DB_HOST が存在しなければ後者が当てられる
     aws_project_region: process.env.ENV_PROJECT_REGION,
     aws_appsync_graphqlEndpoint: process.env.ENV_APPSYNC_GRAPHQLENDPOINT,
     aws_appsync_region: process.env.ENV_APPSYNC_REGION,
     aws_appsync_authenticationType: process.env.ENV_APPSYNC_AUTHENTICATIONTYPE,
-    aws_appsync_apiKey: process.env.ENV_APPSYNC_APIKEY
+    aws_appsync_apiKey: process.env.NODE_ENV !== 'production' ? process.env.ENV_APPSYNC_APIKEY : undefined
   },
 
-  // 公開すべきでないもの
   privateRuntimeConfig: {
+    aws_appsync_apiKey: process.env.ENV_APPSYNC_APIKEY
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

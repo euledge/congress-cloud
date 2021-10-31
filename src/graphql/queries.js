@@ -38,15 +38,6 @@ export const listMeetings = /* GraphQL */ `
         eventDate
         url
         comments {
-          items {
-            id
-            meetingId
-            speakerId
-            voiceNo
-            words
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         createdAt
