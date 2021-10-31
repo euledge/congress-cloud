@@ -34,11 +34,10 @@ export default {
     aws_appsync_graphqlEndpoint: process.env.ENV_APPSYNC_GRAPHQLENDPOINT,
     aws_appsync_region: process.env.ENV_APPSYNC_REGION,
     aws_appsync_authenticationType: process.env.ENV_APPSYNC_AUTHENTICATIONTYPE,
-    aws_appsync_apiKey: process.env.NODE_ENV !== 'production' ? process.env.ENV_APPSYNC_APIKEY : undefined
+    aws_appsync_apiKey: process.env.ENV_APPSYNC_APIKEY
   },
 
   privateRuntimeConfig: {
-    aws_appsync_apiKey: process.env.ENV_APPSYNC_APIKEY
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
