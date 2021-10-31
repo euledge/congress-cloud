@@ -9,8 +9,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - congress-cloud',
-    title: 'congress-cloud',
+    titleTemplate: '%s - council-cloud',
+    title: 'council-cloud',
     htmlAttrs: {
       lang: 'en'
     },
