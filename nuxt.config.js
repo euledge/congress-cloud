@@ -9,8 +9,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - congress-cloud',
-    title: 'congress-cloud',
+    titleTemplate: '%s - council-cloud',
+    title: 'council-cloud',
     htmlAttrs: {
       lang: 'en'
     },
@@ -28,6 +28,17 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
+
+  publicRuntimeConfig: {
+    aws_project_region: process.env.ENV_PROJECT_REGION,
+    aws_appsync_graphqlEndpoint: process.env.ENV_APPSYNC_GRAPHQLENDPOINT,
+    aws_appsync_region: process.env.ENV_APPSYNC_REGION,
+    aws_appsync_authenticationType: process.env.ENV_APPSYNC_AUTHENTICATIONTYPE,
+    aws_appsync_apiKey: process.env.ENV_APPSYNC_APIKEY
+  },
+
+  privateRuntimeConfig: {
+  },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [

@@ -1,77 +1,92 @@
 <template>
   <v-card :loading="loading" class="mx-auto my-12" max-width="374">
+    <v-card-title
+      ><v-btn :href="meeting.url" target="_blank">{{
+        meeting.title
+      }}</v-btn></v-card-title
+    >
+    <v-card-subtitle>開催日：{{ meeting.eventDate }}</v-card-subtitle>
     <vue-word-cloud
       style="height: 250px; width: 374px"
       :words="words"
       :color="([, weight]) => translateColor(weight)"
-      font-size-ratio="5"
+      :font-size-ratio="fontSizeRatio"
       font-family="Roboto"
     />
-
-    <v-card-title>{{ title }}</v-card-title>
-    <v-card-text>2021-06-30</v-card-text>
   </v-card>
 </template>
 <script>
+import { API } from 'aws-amplify'
+import { listCommentByMeetingId } from '~/src/graphql/queries'
+
 const colormap = require('colormap')
 
 export default {
+  props: {
+    meeting: {
+      type: Object,
+      required: true,
+    },
+    fontSizeRatio: {
+      type: Number,
+      default: 10,
+    },
+  },
   data: () => ({
     loading: false,
-    selection: 1,
-    words: [
-      ['企業', 127],
-      ['市民', 117],
-      ['接種', 109],
-      ['事業', 102],
-      ['地域', 100],
-      ['情報', 99],
-      ['高齢者', 91],
-      ['子供', 90],
-      ['必要', 88],
-      ['支援', 87],
-      ['取組', 85],
-      ['市長', 81],
-      ['教育', 78],
-      ['状況', 73],
-      ['対応', 72],
-      ['実施', 65],
-      ['社会', 61],
-      ['学校', 61],
-      ['道路', 60],
-      ['活動', 58],
-      ['対策', 56],
-      ['自治会', 55],
-      ['議員', 53],
-      ['課題', 51],
-      ['センター', 50],
-      ['計画', 48],
-      ['デジタル', 47],
-      ['調査', 46],
-      ['整備', 45],
-      ['環境', 44],
-      ['推進', 44],
-      ['ワクチン', 43],
-      ['健康', 42],
-      ['地区', 42],
-      ['育児', 42],
-      ['理解', 41],
-      ['生活', 41],
-      ['制度', 41],
-      ['活用', 40],
-      ['子育て', 40],
-    ],
-    title: '令和３年６月定例会（第６号）',
+    selection: 25,
+    comments: [],
+    maxCount: 0,
+    minCount: 0,
   }),
+  async mounted() {
+    await this.getComments(this.meeting.id)
+  },
+  computed: {
+    words() {
+      const comments = this.comments || []
+      const words = comments
+        .flatMap((c) => JSON.parse(c.words))
+        .reduce((acc, key) => {
+          if (acc.has(key)) {
+            acc.set(key, acc.get(key) + 1)
+          } else {
+            acc.set(key, 1)
+          }
+          return acc
+        }, new Map())
+      const wordList = [...words.entries()]
+        .sort((a, b) => (a[1] < b[1] ? 1 : -1))
+        .slice(0, this.selection)
+      const w = wordList.map((v, k, m) => {
+        return [v[0], v[1]]
+      })
+      if (w.length > 0) {
+        this.maxCount = w[0][1]
+        this.minCount = w[w.length - 1][1]
+      }
+      return w
+    },
+  },
   methods: {
     translateColor(weight) {
+      const index = Math.floor(weight * (254 / this.maxCount))
       const colors = colormap({
         colormap: 'viridis',
-        nshades: 128,
+        nshades: 255,
         format: 'rgbaString',
         alpha: 1,
       })
-      return colors[weight]
+      return colors[index]
+    },
+    async getComments(meeting_id) {
+      const getComments = await API.graphql({
+        query: listCommentByMeetingId,
+        variables: {
+          meetingId: meeting_id,
+        },
+      })
+      this.comments = getComments.data.listCommentByMeetingId.items
     },
   },
 }

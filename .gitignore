@@ -116,12 +116,13 @@ yarn-error.log
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
 amplify/.config/local-*
-amplify/team-provider-info.json
+amplify/.config/local-*
 amplify/logs
 amplify/mock-data
 amplify/backend/amplify-meta.json
 amplify/backend/awscloudformation
 amplify/backend/.temp
+amplify/team-provider-info.json
 build/
 dist/
 node_modules/
@@ -135,5 +136,3 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 #amplify-do-not-edit-end
-
-congress-cloud-user.csv

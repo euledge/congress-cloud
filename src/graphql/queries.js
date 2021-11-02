@@ -1,4 +1,3 @@
-/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
@@ -10,6 +9,15 @@ export const getMeeting = /* GraphQL */ `
       eventDate
       url
       comments {
+        items {
+          id
+          meetingId
+          speakerId
+          voiceNo
+          words
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -29,6 +37,9 @@ export const listMeetings = /* GraphQL */ `
         title
         eventDate
         url
+        comments {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -41,7 +52,17 @@ export const getSpeaker = /* GraphQL */ `
     getSpeaker(id: $id) {
       id
       name
+      position
       comments {
+        items {
+          id
+          meetingId
+          speakerId
+          voiceNo
+          words
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -59,6 +80,10 @@ export const listSpeakers = /* GraphQL */ `
       items {
         id
         name
+        position
+        comments {
+          nextToken
+        }
         createdAt
         updatedAt
       }
