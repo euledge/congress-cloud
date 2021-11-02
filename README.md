@@ -1,4 +1,4 @@
-# congress-cloud
+# council-cloud
 
 これは [袋井市議会会議録](http://www.city.fukuroi.shizuoka.dbsr.jp/index.php/) に掲載されている会議録をもとに作成したワードクラウドを表示するものです
 
