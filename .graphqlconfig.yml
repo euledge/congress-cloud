@@ -1,6 +1,6 @@
 projects:
-  congresscloud:
-    schemaPath: amplify/backend/api/congresscloud/build/schema.graphql
+  councilcloud:
+    schemaPath: src/graphql/schema.json
     includes:
       - src/graphql/**/*.js
     excludes:
@@ -10,6 +10,3 @@ projects:
         codeGenTarget: javascript
         generatedFileName: ''
         docsFilePath: src/graphql
-extensions:
-  amplify:
-    version: 3

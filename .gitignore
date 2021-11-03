@@ -53,6 +53,9 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
+# nvm
+.nvmrc
+
 # Yarn Integrity file
 .yarn-integrity
 
@@ -115,7 +118,6 @@ yarn-error.log
 
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
-amplify/.config/local-*
 amplify/.config/local-*
 amplify/logs
 amplify/mock-data
