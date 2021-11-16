@@ -2,7 +2,9 @@
   <v-app dark>
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title @click="goHome" style="cursor: pointer">{{
+        title
+      }}</v-toolbar-title>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -34,6 +36,11 @@ export default {
       rightDrawer: false,
       title: '袋井市議会くらうど  ',
     }
+  },
+  methods: {
+    goHome() {
+      this.$router.push('/')
+    },
   },
 }
 </script>

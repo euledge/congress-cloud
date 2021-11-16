@@ -1,30 +1,33 @@
 <template>
-  <v-card
-    :loading="loading"
-    class="mx-auto my-12"
-    max-width="374"
-    @click="openMeeting()"
-  >
+  <v-card height="500" width="80%">
     <v-card-title
       ><v-btn :href="meeting.url" target="_blank">{{
         meeting.title
       }}</v-btn></v-card-title
     >
-    <v-card-subtitle>開催日：{{ meeting.eventDate }}</v-card-subtitle>
+    <v-card-subtitle>
+      <v-slider v-model="selection" label="表示数" min="5"></v-slider>
+    </v-card-subtitle>
+
     <vue-word-cloud
-      style="height: 250px; width: 374px"
-      :animation-duration="animationDuration"
+      style="height: 60%"
       :words="words"
       :color="([, weight]) => translateColor(weight)"
       :font-size-ratio="fontSizeRatio"
       font-family="Roboto"
-    ></vue-word-cloud>
+      ><template slot-scope="{ text, weight, word }">
+        <div
+          :title="tooltipTitle(word[0], weight)"
+          style="cursor: pointer"
+          @click="onWordClick(word)"
+        >
+          {{ text }}
+        </div>
+      </template></vue-word-cloud
+    >
   </v-card>
 </template>
 <script>
-import { API } from 'aws-amplify'
-import { listCommentByMeetingId } from '~/src/graphql/queries'
-
 const colormap = require('colormap')
 
 export default {
@@ -37,24 +40,17 @@ export default {
       type: Number,
       default: 10,
     },
-    animationDuration: {
-      type: Number,
-      default: 0,
-    },
   },
   data: () => ({
     loading: false,
     selection: 25,
-    comments: [],
     maxCount: 0,
     minCount: 0,
   }),
-  async mounted() {
-    await this.getComments(this.meeting.id)
-  },
+  mounted() {},
   computed: {
     words() {
-      const comments = this.comments || []
+      const comments = this.meeting?.comments?.items || []
       const words = comments
         .flatMap((c) => JSON.parse(c.words))
         .reduce((acc, key) => {
@@ -89,17 +85,11 @@ export default {
       })
       return colors[index]
     },
-    async getComments(meeting_id) {
-      const getComments = await API.graphql({
-        query: listCommentByMeetingId,
-        variables: {
-          meetingId: meeting_id,
-        },
-      })
-      this.comments = getComments.data.listCommentByMeetingId.items
+    tooltipTitle(word, weight) {
+      return `${word}(${weight}回)`
     },
-    openMeeting() {
-      this.$router.push({ path: `meeting/${this.meeting.id}` })
+    onWordClick(word) {
+      console.log(word)
     },
   },
 }
