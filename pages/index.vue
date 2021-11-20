@@ -5,7 +5,8 @@
       <v-banner
         >これは、<a href="http://www.city.fukuroi.shizuoka.dbsr.jp/index.php/"
           >袋井市議会会議録</a
-        >&nbsp;に公開されている議事録から発言された単語の回数をもとにワードクラウドにしたものです</v-banner
+        >&nbsp;に公開されている議事録から発言された単語の回数をもとにワードクラウドにしたものです
+        2020/11/20更新</v-banner
       >
     </v-row>
     <v-row>
