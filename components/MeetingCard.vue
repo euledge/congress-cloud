@@ -25,6 +25,22 @@
         </div>
       </template></vue-word-cloud
     >
+    <form
+      method="post"
+      :action="url"
+      id="postjump"
+      target="_blank"
+      v-if="isShow"
+    >
+      <input type="hidden" name="Phrase[]" v-model="phrase" />
+      <input type="hidden" name="TermStartYear" v-model="eventDate.year" />
+      <input type="hidden" name="TermStartMonth" v-model="eventDate.month" />
+      <input type="hidden" name="TermStartDay" v-model="eventDate.day" />
+      <input type="hidden" name="TermEndYear" v-model="eventDate.year" />
+      <input type="hidden" name="TermEndMonth" v-model="eventDate.month" />
+      <input type="hidden" name="TermEndDay" v-model="eventDate.day" />
+      <input type="hidden" name="Class[]" value="3" />
+    </form>
   </v-card>
 </template>
 <script>
@@ -46,6 +62,14 @@ export default {
     selection: 25,
     maxCount: 0,
     minCount: 0,
+    isShow: false,
+    eventDate: {
+      year: 0,
+      month: 0,
+      day: 0,
+    },
+    phrase: '',
+    url: 'http://www.city.fukuroi.shizuoka.dbsr.jp/index.php/2418958?Template=list',
   }),
   mounted() {},
   computed: {
@@ -89,7 +113,18 @@ export default {
       return `${word}(${weight}回)`
     },
     onWordClick(word) {
-      console.log(word)
+      this.isShow = true
+      this.phrase = word[0]
+      if (this.meeting.eventDate) {
+        const date = this.meeting.eventDate.split('-')
+        this.eventDate.year = date[0]
+        this.eventDate.month = date[1]
+        this.eventDate.day = date[2]
+      }
+      this.$nextTick(() => {
+        document.getElementById('postjump').submit()
+        this.isShow = false
+      })
     },
   },
 }

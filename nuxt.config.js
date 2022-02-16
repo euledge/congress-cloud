@@ -12,7 +12,7 @@ export default {
     titleTemplate: '%s - council-cloud',
     title: 'council-cloud',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ja'
     },
     meta: [
       { charset: 'utf-8' },
