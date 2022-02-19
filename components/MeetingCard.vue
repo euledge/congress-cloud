@@ -69,7 +69,7 @@ export default {
       day: 0,
     },
     phrase: '',
-    url: 'http://www.city.fukuroi.shizuoka.dbsr.jp/index.php/2418958?Template=list',
+    url: 'https://www.city.fukuroi.shizuoka.dbsr.jp/index.php/2418958?Template=list',
   }),
   mounted() {},
   computed: {
